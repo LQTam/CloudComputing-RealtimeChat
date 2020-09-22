@@ -1,6 +1,6 @@
 FROM node:12.13-alpine
 
-LABEL maintainer="Mai Trung Duc (maitrungduc1410@gmail.com)"
+LABEL maintainer="La Quyet Tam (laquyettam1995@gmail.com)"
 
 WORKDIR /app
 

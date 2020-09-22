@@ -1,7 +1,7 @@
 # Set master image
 FROM php:7.2-fpm-alpine
 
-LABEL maintainer="Mai Trung Duc (maitrungduc1410@gmail.com)"
+LABEL maintainer="La Quyet Tam (laquyettam1995@gmail.com)"
 
 # Set working directory
 WORKDIR /var/www/html

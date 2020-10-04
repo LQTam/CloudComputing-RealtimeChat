@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
 
             $chatrooms = Chatroom::all();
 
-            foreach($chatrooms as $cr) {
+            foreach ($chatrooms as $cr) {
                 $randIndex = array_rand($quotes);
                 $message = $quotes[$randIndex];
                 $room = strval($cr->id);
@@ -55,7 +55,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

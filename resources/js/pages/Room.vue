@@ -125,8 +125,6 @@ export default {
           }
         })
         .listen("MessagePosted", (e) => {
-          console.log("createdJoin");
-          console.log(e);
           this.publicChat.message.list.push(e.message);
           this.scrollToBottom(document.getElementById("shared_room"), true);
         })
@@ -141,7 +139,6 @@ export default {
           this.scrollToBottom(document.getElementById("shared_room"), true);
         })
         .listen("MessageReacted", (e) => {
-          console.log(e);
           this.onOtherUserReaction(e.reaction, "share");
         });
       this.$Echo
@@ -151,8 +148,6 @@ export default {
             this.privateChat.selectedReceiver &&
             e.message.sender.id === this.privateChat.selectedReceiver.id
           ) {
-            console.log("private");
-            console.log(e);
             this.privateChat.message.list.push(e.message);
             this.privateChat.isSeen = null; // when receive new private message, considered user have seen -> reset isSeen to inital state
             this.privateChat.hasNewMessage = true; // notify user there's new message
@@ -275,8 +270,6 @@ export default {
           }
         })
         .listen("MessageReacted", (e) => {
-          console.log("selectReceiver");
-          console.log(e);
           this.onOtherUserReaction(e.reaction, "private");
         });
       await this.getMessages(roomId); // need to await until messages are loaded first then we are able to focus the input below

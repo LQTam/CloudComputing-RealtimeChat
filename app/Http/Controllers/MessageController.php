@@ -9,15 +9,17 @@ use App\Events\MessagePosted;
 
 class MessageController extends Controller
 {
-    public function index (Request $request) {
+    public function index(Request $request)
+    {
         $messages = Message::with(['sender', 'receiver', 'reactions.user'])
-			->where('room', $request->query('room', ''))
+            ->where('room', $request->query('room', ''))
             ->latest()
             ->paginate(50);
         return $messages;
     }
 
-    public function store (Request $request) {
+    public function store(Request $request)
+    {
         $message = new Message();
         $message->sender = Auth::user()->id;
         $message->content = $request->input('content', '');
@@ -25,7 +27,7 @@ class MessageController extends Controller
         if ($request->has('receiver') && $request->input('receiver')) {
             $receiver = (int) $request->input('receiver');
             $message->receiver = $receiver;
-            $message->room = $message->sender < $receiver ? $message->sender.'__'.$receiver : $receiver.'__'.$message->sender;
+            $message->room = $message->sender < $receiver ? $message->sender . '__' . $receiver : $receiver . '__' . $message->sender;
         } else {
             $message->room = $request->input('room');
         }

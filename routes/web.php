@@ -11,8 +11,6 @@
 |
 */
 
-
-
 Auth::routes();
 
 Route::get('/', 'AppController@index')->middleware('auth');

@@ -8,7 +8,8 @@ use App\Events\MessageReacted;
 
 class ReactionController extends Controller
 {
-    public function react (Request $request) {
+    public function react(Request $request)
+    {
         $reaction = Reaction::where(['msg_id' => $request->input('msg_id'), 'user_id' => $request->input('user_id')])->first();
 
         if ($reaction) {
